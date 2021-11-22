@@ -18,7 +18,11 @@
     "gulp-uglify": "^3.0.0",
     "gulp-watch": "^4.3.11",
     "webpack": "^3.6.0",
-    "webpack-stream-fixed": "^3.2.2"
+    "webpack-stream-fixed": "^3.2.2",
+    "@prettier/plugin-php": "0.14.3",
+    "prettier": "2.0.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "moment": "^2.29.1"
+  }
 }

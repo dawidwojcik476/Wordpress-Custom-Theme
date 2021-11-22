@@ -1,0 +1,191 @@
+.investorzone {
+    margin-top: 128px;
+
+    @media (max-width: 750px) {
+        margin-top: 40px;
+      }
+              
+
+    &__topbuttons {
+        display: flex;
+
+        @media (max-width: 750px) {
+           flex-direction: column;
+           display: none;    flex-direction: column;
+           align-items: center;
+        }
+                
+
+        &-item {
+            width: 50vw;
+            height: 480px;
+            position: relative;
+            transition: 0.6s ease all;
+            background-size: 100%;
+@media (max-width: 750px) {
+    width: 100vw;
+}
+          
+
+            &:hover {
+                background-size: 110%;
+            }
+
+
+            &:hover .investorzone__topbuttons-header p {
+                text-decoration: underline;
+            }
+
+            &:hover .investorzone__topbuttons-header img {
+                height: 32px;
+                visibility: visible;
+            }
+
+
+        }
+
+        &-image {
+            img {
+                width: 100%;
+                object-fit: cover;
+                height: 480px;
+            }
+
+
+
+        }
+
+        &-header {
+            position: absolute;
+            bottom: 72px;
+            left: 64px;
+            @media (max-width: 900px) {
+                left:20px;
+            }
+
+            p {
+                color: white;
+                text-transform: uppercase;
+                font-size: 24px;
+                letter-spacing: 1px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: 0.4s ease all;
+            }
+
+            img {
+                margin-top: 8px;
+                height: 0;
+                visibility: hidden;
+                transition: 0.4s ease all;
+            }
+        }
+    }
+
+    &__wrapper {
+        background: #181A31;
+
+
+    }
+
+    &__header {
+        padding-top: 134px;
+        @media (max-width: 750px) {
+            padding-top: 40px;
+          }
+
+        h3 {
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 500;
+            text-align: center;
+            color: white;
+
+            @media (max-width: 450px) {
+               font-size: 35px;
+               line-height: 47px;
+            }
+        }
+
+        p {
+            color: #7B7C8E;
+            font-size: 20px;
+            text-align: center;
+        }
+    }
+
+    &__buttombuttons {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 130px;
+        padding-top: 64px;
+
+        @media (max-width: 750px) {
+           flex-direction: column;
+            align-items: center;
+            padding-bottom: 40px;
+         }
+                 
+
+        &-item {
+            background-image: url(http://localhost/wordpress/wp-content/themes/mermaid/public/images/invbotbut1.png);
+            width: 544px;
+            height: 472px;
+            position: relative;
+
+            @media (max-width: 450px) {
+              width: 100%;
+                height: 400px;
+             }
+        }
+
+        &-icon {
+
+            margin-left: 63px;
+            margin-top: 63px;
+
+            img {
+                width: 100px;
+            }
+        }
+
+        &-content {
+            position: absolute;
+            bottom: 64px;
+            left: 64px;
+
+            p {
+                font-size: 35px;
+                color: white;
+                font-weight: 700;
+
+                @media (max-width: 450px) {
+                    font-size: 25px;
+                   }
+            }
+
+            a {
+                cursor: pointer;
+                border: 0;
+                background: #00AEEF;
+                color: white;
+                display: flex;
+                align-items: center;
+                width: 150px;
+                height: 48px;
+                justify-content: space-evenly;
+                font-size: 16px;
+                margin-top: 25px;
+                transition: 0.5s ease all;
+                text-decoration: none;
+            }
+
+            img {
+                margin-left: 5px;
+                width: 26px;
+
+            }
+        }
+    }
+}
