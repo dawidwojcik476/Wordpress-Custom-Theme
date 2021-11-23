@@ -92,7 +92,7 @@ function mermaid_post_type() {
             'menu_icon'           => 'dashicons-building',
             'capability_type'       => 'post',
         );
-        register_post_type( 'inv', $args );
+        register_post_type( 'inwestycje', $args );
     
 
 }
@@ -103,3 +103,11 @@ function theme_prefix_rewrite_flush() {
     flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'theme_prefix_rewrite_flush' );
+
+
+function my_acf_init() {
+	
+	acf_update_setting('google_api_key', 'AIzaSyBjfZp0nWVTtNjQ_PG-sQEWkmlqfXSf7hM');
+}
+
+add_action('acf/init', 'my_acf_init');
