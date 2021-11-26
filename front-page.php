@@ -3,34 +3,49 @@ get_header();?>
 <div class="main-background front"></div>
 <section class="main-banner">
     <div class="main-banner__header">
+        <?php if( have_rows('main_banner') ): ?>
+        <?php while( have_rows('main_banner') ): the_row();
+        ?>
+
+  
+
+
         <div class="main-banner__header-text">
-            <h1>Znajdź nieruchomość dla siebie</h1>
+            <h1><?php echo get_sub_field('banner_header') ?></h1>
         </div>
         <div class="main-banner__header-content">
             <div class="main-banner__header-icon">
+                <a href="http://localhost/wordpress/projekty/?inv=inwestycje-mieszkaniowe">
                 <img src="<?php echo get_template_directory_uri(); ?>/public/images/Mieszkania.png"
                     alt="Przejdź do Mieszkania">
                 <p>Mieszkania</p>
+                </a>
             </div>
             <div class="main-banner__header-icon nd">
+            <a href="http://localhost/wordpress/projekty/?inv=inwestycje-biurowe">
                 <img src="<?php echo get_template_directory_uri(); ?>/public/images/Biura.png" alt="Przejdź do Biura">
                 <p>Biura</p>
+        </a>
             </div>
         </div>
         <div class="main-banner__header-button">
-            <button>Zobacz inwestycje<img
-                    src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-White.png"
-                    alt="Przejdź do Inwestycje"> </button>
+            <a href="<?php echo get_sub_field('banner_button_link') ?>">
+                <button><?php echo get_sub_field('banner_button_title') ?><img
+                        src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-White.png"
+                        alt="Przejdź do Inwestycje"> </button></a>
         </div>
+        <?php endwhile; ?>
+        <?php endif; ?>
     </div>
 
     <div class="main-banner__slider">
+   
         <?php   $args = array(
      'post_type'        => 'slider',
      'numberposts' => 2
        );
       $slides = get_posts($args);
- 
+      if( ! empty( $slides ) ){
 
       foreach ($slides as $slide) : ?>
 
@@ -56,6 +71,8 @@ get_header();?>
 
         </div>
         <?php endforeach; ?>
+        <?php }; ?>
+        
 
 
 
@@ -72,10 +89,11 @@ get_header();?>
         <button class="main-banner__swapper-right"><img
                 src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-Dark.png"
                 alt=""></button>
-
+    </div>
 </section>
-</div>
+
 <section class="news">
+    
     <div class="news__header">
         <h2>Aktualności</h2>
         <p>Bądź na bieżąco z naszymi sprawami.</p>
@@ -84,13 +102,13 @@ get_header();?>
     <div class="news__posts">
         <?php 
 
-$args = array(
-    'category_name' => 'aktualnosci',
-    'numberposts' => 4
-);
-$posts = get_posts($args);
-
- foreach ($posts as $post) : ?>
+            $args = array(
+                'category_name' => 'aktualnosci',
+                'numberposts' => 4
+                        );
+                $news = get_posts($args);
+                    if( ! empty( $news ) ){
+                    foreach ($news as $new) : ?>
 
         <div class="news__posts-item">
             <div class="news__posts-image">
@@ -98,13 +116,13 @@ $posts = get_posts($args);
             </div>
             <div class="news__posts-content">
                 <p class="news__posts-date">
-                    <?php echo get_the_date( 'd / m / Y', $post->ID ) ?>
+                    <?php echo get_the_date( 'd / m / Y', $new->ID ) ?>
                 </p>
-                <h4 class="news__posts-header"><?php echo $post->post_title; ?></h4>
-                <p class="news__posts-textarea"><?php echo $post->post_excerpt; ?> </p>
+                <h4 class="news__posts-header"><?php echo $new->post_title; ?></h4>
+                <p class="news__posts-textarea"><?php echo $new->post_excerpt; ?> </p>
 
                 <div class="news__posts-button">
-                    <a href="<?php echo get_permalink($post->ID) ?>">Czytaj dalej <img class="main-banner__slider-arrow"
+                    <a href="<?php echo get_permalink($new->ID) ?>">Czytaj dalej <img class="main-banner__slider-arrow"
                             src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-Accent.png"
                             alt=""></a>
                 </div>
@@ -112,7 +130,8 @@ $posts = get_posts($args);
         </div>
 
 
-        <?php endforeach; ?>
+                     <?php endforeach; ?>
+                     <?php }; ?>
 
     </div>
 
@@ -122,175 +141,152 @@ $posts = get_posts($args);
     </div>
 </section>
 
+
+
 <section class="aboutus"
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/public/images/Main-OFirmie_BG.jpg');">
+
+   
+    
     <div class="aboutus__container">
+         <?php if( have_rows('front_aboutus') ): ?>
+         <?php while( have_rows('front_aboutus') ): the_row(); ?>
         <div class="aboutus__content">
             <div class="aboutus__content-header">
-                <h3> O nas</h3>
+                <h3><?php echo get_sub_field('front_aboutus_header') ?></h3>
             </div>
             <div class="aboutus__content-firstcontent">
-                <p>MERMAID PROPERTIES Sp. z o.o. jest firmą działającą na rynku nieruchomości biurowych i mieszkaniowych
-                    w Warszawie oraz w Łodzi. </p>
+                <p><?php echo get_sub_field('front_aboutus_content') ?></p>
             </div>
             <div class="aboutus__content-secondcontent">
-                <p>Przedmiotem naszej działalności jest rewitalizacja zabytkowych oraz postindustrialnych budynków, a
-                    także realizacja inwestycji biurowych i mieszkaniowych od zera.</p>
+                <p><?php echo get_sub_field('front_aboutus_content_nd') ?></p>
             </div>
             <div class="aboutus__content-button">
-                <a href="#">Więcej o nas<img
+                <a href="<?php echo get_sub_field('front_aboutus_button_url') ?>"><?php echo get_sub_field('front_aboutus_button_title') ?><img
                         src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-White.png"
                         alt="Przejdź do Inwestycje"> </a>
             </div>
-
         </div>
         <div class="aboutus__image">
-            <img src="<?php echo get_template_directory_uri(); ?>/public/images/onas.png" alt="">
+            <img src="<?php echo get_sub_field('front_aboutus_image') ?>" alt="">
         </div>
     </div>
+
+    <?php endwhile; ?>
+    <?php endif; ?>
+
 </section>
 
 <section class="clients">
-    <div class="clients__header">
-        <h2>Nasi Klienci</h2>
+<?php if( have_rows('front_clients') ): ?>
+         <?php while( have_rows('front_clients') ): the_row(); ?>
+         <div class="clients__header">
+        <h2>Nasi klienci</h2>
     </div>
 
     <div class="clients__logos">
+    <?php if( have_rows('front_clients_logos') ): ?>
+         <?php while( have_rows('front_clients_logos') ): the_row(); ?>
         <div class="clients__logos-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/public/images/Anwim.jpg" alt="Logo Klienta">
+            <img src="<?php echo get_sub_field('front_clients_logo') ?>" alt="Logo Klienta">
         </div>
-        <div class="clients__logos-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/public/images/TVN.jpg" alt="">
-        </div>
-        <div class="clients__logos-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/public/images/TVN.jpg" alt="">
-        </div>
-        <div class="clients__logos-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/public/images/TVN.jpg" alt="">
-        </div>
-        <div class="clients__logos-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/public/images/TVN.jpg" alt="">
-        </div>
-        <div class="clients__logos-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/public/images/TVN.jpg" alt="">
-        </div>
+        <?php endwhile; ?>
+    <?php endif; ?>
 
     </div>
 
     <div class="clients__more">
-        <a href="#">Więcej o Klientach <img
+        <a href="<?php echo get_sub_field('front_clients_button_url') ?> "><?php echo get_sub_field('front_clients_button_title') ?> <img
                 src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-Dark.png" alt=""></a>
     </div>
+    <?php endwhile; ?>
+    <?php endif; ?>
+    
 </section>
 
 <section class="newestinv">
-    <div class="newestinv__container">
-        <div class="newestinv__header">
-            <h3>
-                Najnowsze inwestycje
-            </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
 
-        <div class="newestinv__postschoice">
-            <div class="newestinv__postschoice-item active">
-                <p>Wszystkie</p>
-            </div>
-            <div class="newestinv__postschoice-item">
-                <p>Biura</p>
-            </div>
-            <div class="newestinv__postschoice-item">
-                <p>Mieszkania</p>
-            </div>
-        </div>
+<div class="newestinv__container">
 
-        <div class="newestinv__posts">
-            <div class="newestinv__posts-item">
-                <div class="newestinv__posts-image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/public/images/inwestycje.png" alt="">
-                </div>
-                <div class="newestinv__posts-box">
-                    <div class="newestinv__posts-boxhead">
-                        <p class="title">Inwestycja Mieszkaniowa</p>
-                        <p class="date">2021</p>
-                    </div>
-                    <h3>Nad Jasieniem</h3>
-                    <h5>Łódź</h5>
-
-                    <div class="more">
-                        <a href="#">
-                            Zobacz <img class="main-banner__slider-arrow"
-                                src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-Accent.png"
-                                alt=""></a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="newestinv__posts-item">
-                <div class="newestinv__posts-image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/public/images/inwestycje.png" alt="">
-                </div>
-                <div class="newestinv__posts-box">
-                    <div class="newestinv__posts-boxhead">
-                        <p>Inwestycja Mieszkaniowa</p>
-                        <p>2021</p>
-                    </div>
-                    <h3>Nad Jasieniem</h3>
-                    <h5>Łódź</h5>
-
-                    <div class="more">
-                        <a href="#">
-                            Zobacz <img class="main-banner__slider-arrow"
-                                src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-Accent.png"
-                                alt=""></a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="newestinv__posts-item">
-                <div class="newestinv__posts-image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/public/images/inwestycje.png" alt="">
-                </div>
-                <div class="newestinv__posts-box">
-                    <div class="newestinv__posts-boxhead">
-                        <p>Inwestycja Mieszkaniowa</p>
-                        <p>2021</p>
-                    </div>
-                    <h3>Nad Jasieniem</h3>
-                    <h5>Łódź</h5>
-
-                    <div class="more">
-                        <a href="#">
-                            Zobacz <img class="main-banner__slider-arrow"
-                                src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-Accent.png"
-                                alt=""></a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="newestinv__posts-item">
-                <div class="newestinv__posts-image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/public/images/inwestycje.png" alt="">
-                </div>
-                <div class="newestinv__posts-box">
-                    <div class="newestinv__posts-boxhead">
-                        <p>Inwestycja Mieszkaniowa</p>
-                        <p>2021</p>
-                    </div>
-                    <h3>Nad Jasieniem</h3>
-                    <h5>Łódź</h5>
-
-                    <div class="more">
-                        <a href="#">
-                            Zobacz <img class="main-banner__slider-arrow"
-                                src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-Accent.png"
-                                alt=""></a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+<div class="newestinv__postschoice">
+    <div class="newestinv__postschoice-item active" data-filter="*">
+        <p>Wszystkie</p>
     </div>
+    <?php
+  $terms = get_terms('types');
+  foreach ($terms as  $term) { ?>
+    <div data-filter=".<?php  echo $term->slug; ?>" class="newestinv__postschoice-item">
+        <p><?php echo $term->name; ?></p>
+    </div>
+    <?php  }
+
+?>
+
+</div>
+
+<div class="newestinv__posts content grid">
+
+    <?php
+  $args = array(
+    'post_type' => 'inwestycje',
+    'posts_per_page' => -1
+  );
+
+  $query = new WP_Query($args);
+
+  while ($query->have_posts()) {
+    $query->the_post();
+
+    $termsArray = get_the_terms($post->ID, 'types');
+
+    $termsSLug = "";
+    foreach ($termsArray as $term) {
+      $termsSLug .= $term->slug . ' ';
+    }
+
+    ?>
+
+    <div class="newestinv__posts-item single-content <?php echo  $termsSLug; ?>  grid-item">
+
+
+        <div class="newestinv__posts-image">
+
+            <img src="<?php echo the_field('inv_thumbnail', $investion)?>" alt="">
+        </div>
+        <div class="newestinv__posts-box">
+            <div class="newestinv__posts-boxhead">
+                <?php if( have_rows('inv_header-info', $investion) ): ?>
+                <?php while( have_rows('inv_header-info', $investion) ): the_row(); ?>
+                <p class="title"> <?php  echo get_sub_field('inv_category', $investion)?></p>
+                <p class="date"><?php  echo get_sub_field('inv_year', $investion)?></p>
+            </div>
+            <h3><?php echo get_the_title();?></h3>
+            <h5><?php  echo get_sub_field('inv_place', $investion)?></h5>
+
+            <div class="more">
+                <a href="<?php echo get_permalink($query->ID) ?>">
+                    Zobacz <img class="main-banner__slider-arrow"
+                        src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-Accent.png"
+                        alt=""></a>
+            </div>
+
+        </div>
+        <?php endwhile; ?>
+        <?php endif; ?>
+
+<div class="spacer" style="background:#F6F6F8;"></div>
+    </div>
+
+    <?php  }
+wp_reset_postdata();
+
+?>
+
+
+
+</div>
+</div>
+
 </section>
 
 <section class="investorzone">

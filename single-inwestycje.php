@@ -1,6 +1,7 @@
 <?php get_header(); 
 while ( have_posts() ): the_post();?>
 
+
 <div class="main-background">
     <img src="<?php echo get_template_directory_uri(); ?>/public/images/inv-background.png" alt="">
 </div>
@@ -89,10 +90,10 @@ if( get_sub_field('inv_button-blank') == 'on' ) {
                 <?php while( have_rows('inv_header-info') ): the_row(); ?>
                 <p><img src="<?php echo get_template_directory_uri(); ?>/public/images/Lokalizacja-Grey.png"
                         alt="Lokalizacja"> <?php echo get_sub_field('inv_place') ?></p>
-                <p><?php echo get_sub_field('inv_year') ?></p>
+                <p class="year"><?php echo get_sub_field('inv_year') ?></p>
             </div>
             <div class="inv-content__main-content-seegallery">
-                <a href="#">
+                <a data-scroll href="#gallery">
                     Zobacz galerię <img
                         src="<?php echo get_template_directory_uri(); ?>/public/images/Gallery-Accent.png"
                         alt="Zobacz Galerię"></a>
@@ -107,7 +108,7 @@ if( get_sub_field('inv_button-blank') == 'on' ) {
                 <?php echo get_the_content(); ?>
             </p>
         </div>
-      <?php  if( have_rows('inv_standard') ): ?>
+        <?php  if( have_rows('inv_standard') ): ?>
         <div class="inv-content__main-content-standard">
             <div class="inv-content__main-content-standardhead">
                 <h4>Standard wykończenia</h4>
@@ -122,10 +123,10 @@ if( get_sub_field('inv_button-blank') == 'on' ) {
 
 
                             ?>
-                   <li><img src="<?php echo get_template_directory_uri(); ?>/public/images/Check-Accent.png"
+                    <li><img src="<?php echo get_template_directory_uri(); ?>/public/images/Check-Accent.png"
                             alt="Zobacz Galerię">
                         <p>
-                        <?php echo get_sub_field('inv_standard-content') ?>
+                            <?php echo get_sub_field('inv_standard-content') ?>
                         </p>
                     </li>
                     <?php
@@ -136,7 +137,7 @@ if( get_sub_field('inv_button-blank') == 'on' ) {
 
                                 endif;?>
 
-               
+
                 </ul>
             </div>
 
@@ -154,16 +155,18 @@ if( get_sub_field('inv_button-blank') == 'on' ) {
 
 <section class="google-map">
     <?php 
-$location = get_field('google');
+$location = get_field('google_map');
 if( $location ): ?>
     <div class="acf-map" data-zoom="16">
         <div class="marker" data-lat="<?php echo esc_attr($location['lat']); ?>"
-            data-lng="<?php echo esc_attr($location['lng']); ?>"></div>
+            data-lng="<?php echo esc_attr($location['lng']); ?>"> <h3>  <?php echo get_the_title(); ?></h3> 
+       <?php echo $location['address']; ?>
+        </div>
     </div>
     <?php endif; ?>
 </section>
 
-<section class="gallery">
+<section id="gallery" class="gallery">
     <div class="gallery__header">
         <h2>Galeria</h2>
     </div>

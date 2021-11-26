@@ -25,16 +25,53 @@
     justify-content: space-between;
     padding-left: 10%;
 
+    &.single {
+        margin-bottom: 125px;;
+    }
+
+    @media (max-width:750px) {
+        flex-direction: column-reverse;
+        padding-left: 0;
+
+    }
+
 
     &__sidebar {
         width: 25%;
         margin-top: 350px;
         max-width: 300px;
+        
+
+        @media (max-width:750px) {
+            width: 90vw;
+            margin-top: 30px;
+            max-width: 100vw;
+            border-top: 1px solid #C1C0C9;
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 3.5vw;
+
+    &.single {
+        border-top: 0;
+    }
+
+    
+        }
 
         &-back {
             display: flex;
             justify-content: flex-end;
             padding-bottom: 32px;
+
+            &.single {
+                padding-bottom: 0;
+            }
+
+            @media (max-width:750px) {
+                display: none;
+        
+            }
 
             a {
                 display: flex;
@@ -59,6 +96,16 @@
         &-content {
             padding-top: 35px;
             border-top: 1px solid #C1C0C9;
+            @media (max-width:750px) {
+             
+                border-top: 0
+        
+            }
+
+            &.single {
+                border-top: 0;
+            }
+        
 
             ul {
                 list-style: none;
@@ -130,14 +177,29 @@
         padding-top: 60px;
         padding-left: 54px;
         padding-right: 14vw;
+        
+
+        @media (max-width: 1000px) {
+            padding-right: 30px;
+            padding-left: 30px;
+        }
+        @media (max-width:750px) {
+            margin-top: 320px;
+            width: 100vw;
+    
+        }
 
         &-invinfo {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
         }
 
         &-header {
+            &.single {
+                margin-bottom:67px;
+            }
             h1 {
                 font-size: 40px;
                 font-weight: 500;
@@ -175,9 +237,22 @@
             p {
                 padding-left: 18px;
             }
+
+            .year {
+                border:0;
+
+                &.single {
+                    color: #00AEEF;
+                }
+            }
         }
 
         &-seegallery {
+            @media (max-width:450px) {
+                position: absolute;
+    bottom: 90px;
+    right: 0;
+            }
             a {
                 display: flex;
                 font-size: 14px;
@@ -232,6 +307,7 @@
 
                     img {
                         width: 28px;
+                        height: 28px;
                         margin-right: 16px;
                     }
 
@@ -341,5 +417,93 @@
         grid-column-end: 9;
         grid-row-start: 6;
         grid-row-end: 9;
+    }
+}
+
+.single {
+    &__posts {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+
+
+        @media (max-width:900px) {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &-item {
+            position: relative;
+            margin-bottom: 64px;
+
+                border-top: 0;border-top: 1px solid #C1C0C9;
+            
+        
+
+            @media (max-width: 500px) {
+                margin-top: 30px;
+                width: 300px;
+
+            }
+
+            
+        }
+
+        &-button {
+            margin-top: 36px;
+
+            a {
+                display: flex;
+                font-size: 16px;
+                align-items: center;
+                color: #00AEEF;
+                position: absolute;
+                cursor: pointer;
+                text-decoration: none;
+                font-weight: 700;
+
+            }
+
+            img {
+                margin-left: 5px;
+                width: 26px;
+
+            }
+
+        }
+
+        &-date {
+            margin-top: 35px;
+            color: #7B7C8E;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        &-header {
+            margin-top: 15px;
+            max-width: 350px;
+            font-size: 24px;
+            font-weight: 600;
+
+          
+        }
+
+        &-textarea {
+            max-width: 350px;
+            margin-top: 11px;
+            font-size: 14px;
+            color: #7B7C8E;
+            font-weight: 600;
+        }
+
+        &-content {
+            display: flex;
+flex-direction: column;
+padding: 0px 30px;
+            @media (max-width: 500px) {
+                padding: 0px 30px;
+            }
+        }
     }
 }

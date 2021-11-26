@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "lightbox2": "^2.11.3",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "smooth-scroll": "^16.1.3"
   }
 }

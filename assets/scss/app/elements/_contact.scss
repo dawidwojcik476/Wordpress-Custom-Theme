@@ -1,0 +1,110 @@
+.contact-temp {
+    margin-top: 350px;
+    max-width: 1480px;
+    padding: 0px 25px;
+    margin-right: auto;
+    margin-left: auto;
+
+    &__top {
+        &-header {
+            display: flex;
+            justify-content: space-between;
+
+            @media (max-width:800px) {
+                position: relative;
+            }
+
+            a {
+                display: flex;
+                font-size: 14px;
+                align-items: center;
+                color: #00AEEF;
+                cursor: pointer;
+                text-decoration: none;
+                font-weight: 700;
+
+                bottom: 32px;
+
+                img {
+                    margin-left: 5px;
+
+                    width: 26px;
+
+                }
+                @media (max-width:800px) {
+                    position: absolute;
+                    right: 0;
+                    top: -70px;
+                }
+
+                @media (max-width:800px) {
+                    position: absolute;
+                    right: 0;
+                    top: -100px;
+                }
+            }
+
+            h1 {
+                font-size: 32px;
+                font-weight: 600;
+            }
+        }
+        &-adresses-list {
+            margin-top: 48px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            @media (max-width:610px) {
+                flex-direction: column;
+    align-items: center;
+            }
+        }
+
+        &-adresses-item {
+            display: flex;
+            width: 33%;
+            @media (max-width:610px) {
+                width: 100%;
+                contain: content;
+                justify-content: center;
+                margin-bottom: 50px;
+            }
+          
+
+            img {
+                width: 28px;
+                height: 28px;
+                margin-right: 5px;
+            }
+        }
+
+        &-adress-botitem {
+            h4 {
+                font-size: 20px;
+                font-weight: 600;
+            }
+            p {
+                margin-top: 12px;
+                font-size: 16px;
+                font-weight: 500;
+                color:#7B7C8E;
+                &.email {
+                    color:#00AEEF;
+                }
+                &.map {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color:black;
+                    display: flex;
+                    align-items: center;
+                    margin-top: 30px;
+                    img {
+                        margin-left: 5px;
+                      
+                    }
+                }
+            }
+        }
+    }
+}

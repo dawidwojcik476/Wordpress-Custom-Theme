@@ -47,6 +47,13 @@
                         font-size: 16px;
                     }
                 }
+
+                &.template {
+                    margin-bottom: 200px;
+                    @media (max-width:900px) {
+                        margin-bottom: 10px;
+                    }
+                }
             }
 
             img {
