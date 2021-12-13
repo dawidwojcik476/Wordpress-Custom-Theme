@@ -8,7 +8,7 @@
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="icon" type="image/png"
         href="<?php the_field('favicon','option'); ?>" />
-
+        <title><?php bloginfo('name'); ?> | <?php is_front_page() ? bloginfo('description') : wp_title(''); ?></title>
     <?php wp_enqueue_script("jquery"); ?>
 
     <?php wp_head(); ?>

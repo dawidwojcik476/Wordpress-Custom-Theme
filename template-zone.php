@@ -10,113 +10,72 @@ get_header();
 ?>
 <div class="main-background page">
     <h1><?php echo get_the_title();?></h1>
-    <img src="<?php echo get_template_directory_uri(); ?>/public/images/ofirmieback.png" alt="">
+    <?php if( have_rows('header_options') ): ?>
+ <?php while( have_rows('header_options') ): the_row(); ?>
+ <?php if( get_sub_field('header_options_background')): ?>
+    <img src="<?php echo get_sub_field('header_options_background')?>" alt="">
+    <?php endif; ?>
+    <?php endwhile; ?>
+                     <?php endif; ?>
 </div>
 
 <section class="zone" style="margin-top:290px">
-
+<?php if( have_rows('inv_coop') ): ?>
+ <?php while( have_rows('inv_coop') ): the_row(); ?>
     <section class="zone__coop">
         <div class="zone__coop-header">
-            <h1>Współpraca</h1>
-            <p>Mermaid Capital działa w charakterze Inwestora Zastępczego i zapewnia kompleksową obsługę procesu
-                inwestycyjnego, konsekwentnie realizując uzgodniony z Inwestorami plan realizacji projektu. Zadowolenie
-                naszych Inwestorów oraz dobre wzajemne relacje są jednym z naszych priorytetów, dlatego zawsze dbamy o
-                przepływ informacji i regularne raportowanie o stanie realizacji przedsięwzięć.</p>
+            <h1><?php echo get_sub_field('inv_coop_header')?></h1>
+            <p><?php echo get_sub_field('inv_coop_content_first')?></p>
         </div>
         <div class="zone__coop-investors">
-            <p>Do naszych największych inwestorów zaliczają się:</p>
+            <p><?php echo get_sub_field('inv_coop_content_nd')?></p>
             <div class="zone__coop-investorslist">
                 <ul>
+                <?php if( have_rows('inv_coop_logos') ): ?>
+                <?php while( have_rows('inv_coop_logos') ): the_row(); ?>
                     <li>
-                        <img src="<?php echo get_template_directory_uri(); ?>/public/images/Anwim.jpg"
+                        <img src="<?php echo get_sub_field('inv_coop_logo')?>"
                             alt="Logo Klienta">
                     </li>
-                    <li>
-                        <img src="<?php echo get_template_directory_uri(); ?>/public/images/Anwim.jpg"
-                            alt="Logo Klienta">
-                    </li>
-                    <li>
-                        <img src="<?php echo get_template_directory_uri(); ?>/public/images/Anwim.jpg"
-                            alt="Logo Klienta">
-                    </li>
-                    <li>
-                        <img src="<?php echo get_template_directory_uri(); ?>/public/images/Anwim.jpg"
-                            alt="Logo Klienta">
-                    </li>
-                    <li>
-                        <img src="<?php echo get_template_directory_uri(); ?>/public/images/Anwim.jpg"
-                            alt="Logo Klienta">
-                    </li>
-                    <li>
-                        <img src="<?php echo get_template_directory_uri(); ?>/public/images/Anwim.jpg"
-                            alt="Logo Klienta">
-                    </li>
-                    <li>
-                        <img src="<?php echo get_template_directory_uri(); ?>/public/images/Anwim.jpg"
-                            alt="Logo Klienta">
-                    </li>
+                    <?php endwhile; ?>
+                     <?php endif; ?>
                 </ul>
             </div>
-            <p>Poza dużymi funduszami inwestycyjnymi kapitał w naszych inwestycjach lokują mniejsze prywatne fundusze
-                oraz prywatni inwestorzy.</p>
+            <p><?php echo get_sub_field('inv_coop_content_first')?></p>
         </div>
+        <?php endwhile; ?>
+        <?php endif; ?>
     </section>
-    <section class="zone__realization">
+    <?php if( have_rows('inv_realization') ): ?>
+ <?php while( have_rows('inv_realization') ): the_row(); ?>
+    <section class="zone__realization"> 
     <div class="zone__realization-header">
-            <h1>Realizacja</h1>
-            <p>Do każdego realizowanego projektu podchodzimy indywidualnie i merytorycznie, staramy się rozpoznać wszystkie możliwe scenariusze rozwoju projektu i podążamy za najbardziej optymalnym rozwiązaniem. Istnieje szereg zasad, którymi kierujemy się planując i realizując przedsięwzięcie inwestycyjne. Na poniższym schemacie prezentujemy ogólny przyjęty przez naszą firmę plan działania, zapewniający optymalizację wszystkich procesów związanych z inwestycją deweloperską.</p>
+            <h1><?php echo get_sub_field('inv_realization_header')?></h1> 
+            <p><?php echo get_sub_field('inv_realization_content')?></p>
         </div>
 
         <div class="zone__realization-track">
             <ul>
+            <?php if( have_rows('inv_track') ): ?>
+ <?php while( have_rows('inv_track') ): the_row(); ?>
                 <li>
-                    <img src="<?php echo get_template_directory_uri(); ?>/public/images/AnalizaMozliwosciFinansowych.png" alt="">
+                    <img src=" <?php echo get_sub_field('inv_track_icon')?>" alt="">
                     <div class="zone__realization-track-content">
                         <h4>
-                        Pozyskiwanie finansowania zewnętrznego
+                        <?php echo get_sub_field('inv_track_title')?>
                         </h4>
                         <p>
-                        Posiadając odpowiedni poziom kapitału własnego, ubiegamy się o kredyt inwestycyjny celem pokrycia pozostałej części kosztów. Zielone światło ze strony banku oznacza dla nas moment rozpoczęcia robót budowlanych.
+                        <?php echo get_sub_field('inv_track_content')?>
                         </p>
                     </div>
                 </li>
-                <li>
-                    <img src="<?php echo get_template_directory_uri(); ?>/public/images/AnalizaMozliwosciFinansowych.png" alt="">
-                    <div class="zone__realization-track-content">
-                        <h4>
-                        Analiza możliwości inwestycyjnych
-                        </h4>
-                        <p>
-                        Przed podjęciem decyzji o realizacji inwestycji wykonujemy pełne due dilligence danej nieruchomości, obejmujące weryfikację stanu prawnego, analizę planów miejscowych, lokalizacji oraz innych specyficznych cech danego obiektu. Jednocześnie na bieżąco analizujemy obecną i prognozowaną sytuację na rynku nieruchomości. Na podstawie zebranych informacji przyjmujemy odpowiednie założenia, dokonujemy obliczeń, oceniamy ryzyko, w rezultacie otrzymując projekt inwestycji, który następnie prezentujemy naszym inwestorom.
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <img src="<?php echo get_template_directory_uri(); ?>/public/images/AnalizaMozliwosciFinansowych.png" alt="">
-                    <div class="zone__realization-track-content">
-                        <h4>
-                        Pozyskiwanie equity
-                        </h4>
-                        <p>
-                        Po zbadaniu projektu, modelu finansowego oraz prognozowanych stóp zwrotu Inwestorzy decydują o zostaniu Partnerami w przedsięwzięciu. Uzyskany w ten sposób kapitał własny stanowi ustaloną część sumy wszystkich kosztów związanych z inwestycją.
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <img src="<?php echo get_template_directory_uri(); ?>/public/images/AnalizaMozliwosciFinansowych.png" alt="">
-                    <div class="zone__realization-track-content">
-                        <h4>
-                        Pozyskiwanie equity
-                        </h4>
-                        <p>
-                       
-                        </p>
-                    </div>
-                </li>
+                <?php endwhile; ?>
+        <?php endif; ?>
             </ul>
         </div>
     </section>
-
+    <?php endwhile; ?>
+        <?php endif; ?>
 </section>
 <?php 
 

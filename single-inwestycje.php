@@ -3,7 +3,13 @@ while ( have_posts() ): the_post();?>
 
 
 <div class="main-background">
-    <img src="<?php echo get_template_directory_uri(); ?>/public/images/inv-background.png" alt="">
+<?php if( have_rows('header_options') ): ?>
+ <?php while( have_rows('header_options') ): the_row(); ?>
+ <?php if( get_sub_field('header_options_background')): ?>
+    <img src="<?php echo get_sub_field('header_options_background')?>" alt="">
+    <?php endif; ?>
+    <?php endwhile; ?>
+                     <?php endif; ?>
 </div>
 <section class="inv-content">
 
@@ -11,9 +17,22 @@ while ( have_posts() ): the_post();?>
 
     <div class="inv-content__sidebar">
         <div class="inv-content__sidebar-back">
-            <a href="#">
+
+      
+            <?php if (ICL_LANGUAGE_CODE=='en' ) : ?>
+                <a href="http://mermaid.atthost24.pl/en/projects/">
+                <?php else:  ?>
+                    <a href="http://mermaid.atthost24.pl/projekty/">
+                    <?php endif; ?>
                 <img src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleLeft-Dark.png"
-                    alt="Projekty"> Wróć do Projektów </a>
+                    alt="Projekty"> 
+                
+            <?php if (ICL_LANGUAGE_CODE=='en' ) : ?>
+                Back to Projects
+                <?php else:  ?>
+                    Wróć do Projektów 
+                    <?php endif; ?>
+                </a>
         </div>
 
         <div class="inv-content__sidebar-content">
@@ -75,26 +94,27 @@ if( get_sub_field('inv_button-blank') == 'on' ) {
             </h1>
         </div>
         <div class="inv-content__main-content-invinfo">
+                  <?php if( have_rows('inv_header-info') ): ?>
+                <?php while( have_rows('inv_header-info') ): the_row(); ?>
             <div class="inv-content__main-content-underheader">
                 <h2>
                     <div>
-                        <?php 
-                            foreach((get_the_category()) as $category){
-                                echo $category->name."<br>";
-                                }
-                            ?>
+                    <?php  echo get_sub_field('inv_category')?>
                     </div>
                 </h2>
-
-                <?php if( have_rows('inv_header-info') ): ?>
-                <?php while( have_rows('inv_header-info') ): the_row(); ?>
+          
                 <p><img src="<?php echo get_template_directory_uri(); ?>/public/images/Lokalizacja-Grey.png"
                         alt="Lokalizacja"> <?php echo get_sub_field('inv_place') ?></p>
                 <p class="year"><?php echo get_sub_field('inv_year') ?></p>
             </div>
             <div class="inv-content__main-content-seegallery">
                 <a data-scroll href="#gallery">
-                    Zobacz galerię <img
+                <?php if (ICL_LANGUAGE_CODE=='en' ) : ?>
+                See gallery
+                <?php else:  ?>
+                    Zobacz galerię
+                    <?php endif; ?>
+                     <img
                         src="<?php echo get_template_directory_uri(); ?>/public/images/Gallery-Accent.png"
                         alt="Zobacz Galerię"></a>
                 <?php endwhile; ?>
@@ -111,7 +131,12 @@ if( get_sub_field('inv_button-blank') == 'on' ) {
         <?php  if( have_rows('inv_standard') ): ?>
         <div class="inv-content__main-content-standard">
             <div class="inv-content__main-content-standardhead">
-                <h4>Standard wykończenia</h4>
+            <?php if (ICL_LANGUAGE_CODE=='en' ) : ?>
+                Standard of finish
+                <?php else:  ?>
+                    <h4>Standard wykończenia</h4>
+                    <?php endif; ?>
+           
             </div>
             <div class="inv-content__main-content-standardlist">
                 <ul>
@@ -168,7 +193,12 @@ if( $location ): ?>
 
 <section id="gallery" class="gallery">
     <div class="gallery__header">
-        <h2>Galeria</h2>
+    <?php if (ICL_LANGUAGE_CODE=='en' ) : ?>
+        <h2>Gallery</h2>
+                <?php else:  ?>
+                    <h2>Galeria</h2>
+                    <?php endif; ?>
+     
     </div>
 
     <?php 
@@ -178,7 +208,7 @@ if( $images ): ?>
         <?php foreach( $images as $image ): ?>
         <li class="gallery__item">
             <a href="<?php echo esc_url($image['url']); ?>" data-lightbox="roadtrip">
-                <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>"
+                <img src="<?php echo esc_url($image['sizes']['large']); ?>"
                     alt="<?php echo esc_attr($image['alt']); ?>" />
             </a>
             <p><?php echo esc_html($image['caption']); ?></p>

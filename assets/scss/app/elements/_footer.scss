@@ -1,8 +1,12 @@
 .footer {
     background: #F6F6F8;
     @media (max-width:1480px) {
-        padding:0px 25px;
+        padding:0px 130px;
     }
+    @media (max-width:1000px) {
+        padding:0px 20px;
+    }
+
 
     @media (max-width:450px) {
         padding:0px 0px
@@ -84,8 +88,12 @@
 
             p {
                 font-weight: 800;
-                margin-left: 5px;
+                &:nth-child(2) {
+                    margin-left: 5px;
+                }
             }
+
+        
         }
 
         &-warsaw,
@@ -116,7 +124,7 @@
         &-item.industrial {
 
 
-            margin-right: 163px;
+            margin-right: 133px;
             
             @media (max-width:450px) {
                 margin-right: 25px;
@@ -126,9 +134,9 @@
 
         &-ul {
             margin-top: 28px;
-
-            ul {
-                list-style-type: none;
+            list-style-type: none;
+         
+               
 
                 li {
                     margin-bottom: 20px;
@@ -141,7 +149,10 @@
 
                     }
                 }
-            }
+                ul {
+                    list-style-type: none;
+                }
+            
         }
 
         &-bottomcont {
@@ -150,16 +161,31 @@
             display: flex;
             font-size: 10px;
             color: #7B7C8E;
+          
 
             span {
                 font-weight: 500;
             }
-
+a {
+    font-weight: 800;
+    font-size: 10px;
+    color: #7B7C8E;
+}
             p {
                 margin-left: 4px;
                 font-weight: 800;
 
             }
+        }
+
+        &-item.projects {
+            position: relative;
+            padding-right: 55px;
+            .footer__menu-bottomcont {
+                position: absolute;
+                bottom: 0px;
+            }
+            
         }
 
     }

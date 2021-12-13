@@ -23,6 +23,7 @@
     "prettier": "2.0.5"
   },
   "dependencies": {
+    "default-passive-events": "^2.0.0",
     "lightbox2": "^2.11.3",
     "moment": "^2.29.1",
     "smooth-scroll": "^16.1.3"

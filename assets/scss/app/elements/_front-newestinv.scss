@@ -1,9 +1,15 @@
 .newestinv {
     margin-top: 127px;
     background: #F6F6F8;
+    padding-bottom: 127px;
 
     @media (max-width: 450px) {
         margin-top: 30px;
+    }
+
+    @media (max-width: 550px) {
+        padding-bottom: 30px;
+
     }
 
     &__container {
@@ -13,7 +19,12 @@
     }
 
     &__header {
+
         padding-top: 134px;
+
+        a {
+            color: black;
+        }
 
         h3 {
             font-size: 48px;
@@ -80,15 +91,24 @@
         justify-content: space-between;
         margin-right: auto;
         margin-left: auto;
+        height: auto !important;
+
 
         @media (max-width: 1150px) {
             justify-content: center;
+            max-width: 500px;
         }
 
+
         &-item {
-            position: relative;
+            position: relative !important;
             width: 544px;
+            height: 544px !important;
             margin-top: 32px;
+            left: auto !important;
+            top: auto !important;
+            overflow: hidden;
+
             .spacer {
                 position: absolute;
                 bottom: 0;
@@ -97,8 +117,25 @@
                 height: 100%;
                 background: white;
                 z-index: 100;
-            
+                display: none;
+
             }
+
+            @media (max-width:500px) {
+                margin-left: -20px;
+
+                .spacer {
+                    display: none;
+                }
+            }
+
+            @media (max-width:400px) {
+                max-width: 400px;
+
+            }
+
+
+
 
         }
 
@@ -166,5 +203,123 @@
                 margin-left: 15px;
             }
         }
+
+
+
+        &.one,
+        &.two {
+            height: 575px !important;
+        }
+
+        &.three,
+        &.four {
+            height: 1150px !important;
+            ;
+
+            &-item {
+
+                &:nth-child(3),
+                &:nth-child(4) {
+                    top: 575px !important;
+                }
+            }
+        }
+
+        &.three {
+            &-item:nth-child(3) {
+                left: 0 !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            &.one {
+                height: 575px !important;
+
+
+            }
+
+            &.two {
+                height: 1150px !important;
+
+                &-item {
+
+
+
+                    &:nth-child(2) {
+                        top: 575px !important;
+                    }
+                }
+
+            }
+
+            &.three {
+                height: 1725px !important;
+
+                &-item {
+
+
+
+                    &:nth-child(2) {
+                        top: 575px !important;
+                    }
+
+                    &:nth-child(3) {
+                        top: 1150px !important;
+                    }
+                }
+
+
+            }
+
+            &.four {
+                height: 2300px !important;
+
+                &-item {
+
+
+                    &:nth-child(2) {
+                        top: 575px !important;
+                    }
+
+                    &:nth-child(3) {
+                        top: 1150px !important;
+                    }
+
+                    &:nth-child(4) {
+                        top: 1725px !important;
+                    }
+                }
+            }
+        }
+
+        &-image {
+            img {
+                height: 544px;
+                width: 536px;
+                object-fit: cover;
+                transition: 1s;
+            }
+
+            overflow: hidden;
+
+            &:hover {
+                img {
+                    height: 574px;
+                    width: 576px;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        &.morethanfour {
+            max-height: 1156px !important;
+            overflow: hidden;
+
+            @media (max-width:1190px) {
+                max-height: 2330px !important;
+                overflow: hidden;
+            }
+        }
+
     }
 }

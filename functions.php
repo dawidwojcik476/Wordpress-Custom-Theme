@@ -90,7 +90,7 @@ function mermaid_post_type() {
             'label'                 => 'Inwestycje',
             'description'           => 'Post Type Description',
             'labels'                => $labels,
-            'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+            'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excert' ),
             'taxonomies'            => array(),
             'hierarchical'          => false,
             'public'                => true,
@@ -107,6 +107,45 @@ function mermaid_post_type() {
             'capability_type'       => 'post',
         );
         register_post_type( 'inwestycje', $args );
+
+        register_post_type( 'aktualnosci', array(
+            'label'               => __( 'Aktualności', 'textdomain' ),
+            'public'              => true,
+            'exclude_from_search' => false,
+            'show_in_nav_menus'   => false,
+            'menu_icon'           => 'dashicons-welcome-widgets-menus',
+            'supports'            => array( 'title', 'editor', 'thumbnail', 'custom-fields'  ),
+            'rewrite'             => [
+                'slug' => 'aktualnosci'
+            ],
+            'has_archive'           => false,
+            'hierarchical'          => false,
+            'publicly_queryable'  => true,
+            'menu_position' => 20,
+            
+        ));
+        $labels = array(
+            'name' => _x( 'Kategorie Aktualnosci', 'taxonomy general name' ),
+            'singular_name' => _x( 'Kategorie Aktualności', 'taxonomy singular name' ),
+            'search_items' =>  __( 'Szukaj aktualności' ),
+            'all_items' => __( 'Wszystkie aktualności' ),
+            'parent_item' => __( 'Parent Type' ),
+            'parent_item_colon' => __( 'Parent Type:' ),
+            'edit_item' => __( 'Edytuj' ), 
+            'update_item' => __( 'Edytuj' ),
+            'add_new_item' => __( 'Nowa kategoria' ),
+            'new_item_name' => __( 'New Type Name' ),
+            'menu_name' => __( 'Kategorie Aktualności' ),
+          ); 	
+         
+          register_taxonomy('newscategory',array('aktualnosci'), array(
+            'hierarchical' => true,
+            'labels' => $labels,
+            'show_ui' => true,
+            'show_admin_column' => true,
+            'query_var' => true,
+            'rewrite' => array( 'slug' => 'newscategory' ),
+            ));
     
 
 }
@@ -143,6 +182,8 @@ function crunchify_create_deals_custom_taxonomy() {
     'rewrite' => array( 'slug' => 'type' ),
   ));
 }
+
+
 
 function theme_prefix_rewrite_flush() {
     flush_rewrite_rules();

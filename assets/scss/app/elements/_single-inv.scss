@@ -60,6 +60,7 @@
         }
 
         &-back {
+            margin-top: 30px;
             display: flex;
             justify-content: flex-end;
             padding-bottom: 32px;
@@ -193,7 +194,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            position: relative;
+         
         }
 
         &-header {
@@ -248,10 +249,10 @@
         }
 
         &-seegallery {
-            @media (max-width:450px) {
+            @media (max-width:540px) {
                 position: absolute;
-    bottom: 90px;
-    right: 0;
+                top: 440px;
+                right: 10px;
             }
             a {
                 display: flex;
@@ -345,9 +346,9 @@
     ul {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(8, 5vw);
         grid-gap: 1.5rem;
         list-style-type: none;
+        grid-template-rows: auto;
     }
 
     img {

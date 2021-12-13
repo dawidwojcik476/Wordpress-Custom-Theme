@@ -2,13 +2,19 @@
 while ( have_posts() ): the_post();?>
 
 <div class="main-background">
-    <img src="<?php echo get_template_directory_uri(); ?>/public/images/inv-background.png" alt="">
+<?php if( have_rows('header_options') ): ?>
+ <?php while( have_rows('header_options') ): the_row(); ?>
+ <?php if( get_sub_field('header_options_background')): ?>
+    <img src="<?php echo get_sub_field('header_options_background')?>" alt="">
+    <?php endif; ?>
+    <?php endwhile; ?>
+                     <?php endif; ?>
 </div>
 <section class="inv-content single">
 
     <div class="inv-content__sidebar single">
         <div class="inv-content__sidebar-back single">
-            <a href="#">
+            <a href="http://localhost/wordpress/aktualnosci/">
                 <img src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleLeft-Dark.png"
                     alt="Projekty"> Wróć do Aktualności </a>
         </div>
@@ -16,7 +22,7 @@ while ( have_posts() ): the_post();?>
         <div class="inv-content__sidebar-content single">
 
         <?php $args = array(
-'post_type'      => 'post',
+'post_type'      => 'aktualnosci',
 'post_status' => 'publish',
 'orderby' => 'date',
             'order'   => 'DESC',
@@ -24,12 +30,11 @@ while ( have_posts() ): the_post();?>
 'hide_empty'     => 1,
 'depth'          => 1,
 'posts_per_page' => 2,
-'category_name' => 'aktualnosci',
 ); 
 
-$posts = get_posts($args);
+$nerws = get_posts($args);
 
-foreach ($posts as $post) : ?>
+foreach ($nerws as $nerw) : ?>
 
 
 
@@ -37,11 +42,11 @@ foreach ($posts as $post) : ?>
     <div class="single__posts-item">
         <div class="single__posts-content">
             <p class="single__posts-date">
-                <?php echo get_the_date( 'd / m / Y', $post->ID ) ?>
+                <?php echo get_the_date( 'd / m / Y', $nerw->ID ) ?>
             </p>
-            <h4 class="single__posts-header"><?php echo $post->post_title; ?></h4>
+            <h4 class="single__posts-header"><?php echo $nerw->post_title; ?></h4>
             <div class="single__posts-button">
-                <a href="<?php echo get_permalink($post->ID) ?>">Czytaj dalej <img class="main-banner__slider-arrow"
+                <a href="<?php echo get_permalink($nerw->ID) ?>">Czytaj dalej <img class="main-banner__slider-arrow"
                         src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleRight-Accent.png"
                         alt=""></a>
             </div>

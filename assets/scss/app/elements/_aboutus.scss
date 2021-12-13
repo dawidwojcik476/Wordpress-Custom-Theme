@@ -97,7 +97,9 @@
 
     &__header {
         margin-top: 50px;
-
+a {
+    color: black
+}
         h2 {
             font-size: 48px;
             text-transform: uppercase;
@@ -290,7 +292,9 @@ section.history {
 .history {
     &__header {
         margin-top: 50px;
-
+        a {
+            color: black
+        }
         h2 {
             font-size: 48px;
             text-transform: uppercase;

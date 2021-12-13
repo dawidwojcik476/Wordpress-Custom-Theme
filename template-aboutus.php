@@ -10,31 +10,54 @@ get_header();
 ?>
 <div class="main-background page">
 <h1><?php echo get_the_title();?></h1>
-    <img src="<?php echo get_template_directory_uri(); ?>/public/images/ofirmieback.png" alt="">
+<?php if( have_rows('header_options') ): ?>
+ <?php while( have_rows('header_options') ): the_row(); ?>
+ <?php if(get_sub_field('header_options_background')): ;?>
+    <img src="<?php echo get_sub_field('header_options_background')?>" alt="">
+    <?php  endif; ?>
+    <?php endwhile; ?>
+                     <?php endif; ?>
 </div>
 <?php ?>
 
 <div class="page-type aboutus">
 
 <section class="aboutustemp">
-    <div class="aboutustemp__postschoice">
-        <div class="aboutustemp__postschoice-item profile active">
-            <p>Profił działalności</p>
+    <div class="aboutustemp__postschoice" data-link="<?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
+                   echo $actual_link;
+                  ?>">
+        <div class="aboutustemp__postschoice-item profile active" >
+        <?php if (ICL_LANGUAGE_CODE=='en' ) : ?>
+                <p>Business profile</p>
+                <?php else:  ?>
+                    <p>Profil działalności</p>
+                    <?php endif; ?>
+           
+       
         </div>
         <div class="aboutustemp__postschoice-item history">
-            <p>Historia</p>
+        <?php if (ICL_LANGUAGE_CODE=='en' ) : ?>
+                <p>History</p>
+                <?php else:  ?>
+                    <p>Historia</p>
+                    <?php endif; ?>
         </div>
         <div class="aboutustemp__postschoice-item invclients">
-            <p>Klienci</p>
+    
+            <?php if (ICL_LANGUAGE_CODE=='en' ) : ?>
+                <p>Clients</p>
+                <?php else:  ?>
+                    <p>Klienci</p>
+                    <?php endif; ?>
         </div>
     </div>
 </section>
 
 <section class="invprofile active">
     <div class="invprofile__header">
-        <h2>Profil działalności</h2>
-        <p>MERMAID CAPITAL Sp. z o.o. jest firmą działającą na rynku nieruchomości biurowych
-            i mieszkaniowych w Warszawie oraz w Łodzi. Przedmiotem naszej działalności jest:</p>
+<a href="<?php echo the_field('aboutus_header_url') ?>">
+        <h2><?php echo the_field('aboutus_header') ?>  </h2></a>
+        <p><?php echo the_field('aboutus_header_content') ?>  </p>
     </div>
     <div class="invprofile__content">
         <?php  the_content(); ?>
@@ -76,14 +99,16 @@ get_header();
 
 <section class="history">
 <div class="history__header">
-        <h2>Historia</h2>
+<a href="<?php echo the_field('aboutus_history_header_url') ?>">
+        <h2><?php echo the_field('aboutus_history_header') ?>  </h2></a>
         
     </div>
-<?php if( have_rows('aboutus_history') ): ?>
-        <?php while( have_rows('aboutus_history') ): the_row(); ?>
+
      
         <div class="history__list">
         <ul>
+        <?php if( have_rows('aboutus_history') ): ?>
+        <?php while( have_rows('aboutus_history') ): the_row(); ?>
             <li>
                 <h4>
                 <?php echo get_sub_field('history_point_title') ?>
@@ -92,11 +117,11 @@ get_header();
                 <?php echo get_sub_field('history_point_content') ?>
                 </p>
             </li>
-        
+            <?php endwhile; ?>
+        <?php endif; ?>
         </ul>
     </div>
-        <?php endwhile; ?>
-        <?php endif; ?>
+      
    
   
 </section>

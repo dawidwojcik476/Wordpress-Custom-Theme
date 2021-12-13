@@ -61,3 +61,24 @@ $(document).ready(function(){
      $(this).addClass('active');
     });
   })
+
+
+
+
+  $(document).ready( function() {
+
+    $('.grid').isotope({
+     itemSelector: '.grid-item',
+    });
+    
+    // filter items on button click
+    $('.news-template__postschoice').on( 'click', '.news-template__postschoice-item', function() {
+     var filterValue = $(this).attr('data-filter');
+     $('.grid').isotope({ filter: filterValue });``
+     $('.news-template__postschoice .news-template__postschoice-item').removeClass('active');
+     $(this).addClass('active');
+    });
+  })  
+ 
+
+

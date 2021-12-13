@@ -4,6 +4,11 @@
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .acf-map {
     width: 100%;
     height: 400px;
@@ -13,15 +18,16 @@
 
 // Fixes potential theme css conflict.
 .acf-map img {
-   max-width: inherit !important;
+    max-width: inherit !important;
 }
+
 .app-container {
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    overflow-x: hidden;   
+    overflow-x: hidden;
     width: 100%;
-   
+
 
     &.sticky {
         padding-top: 90px;
@@ -29,7 +35,7 @@
 
     @media screen and (max-width: 768px) {
         body {
-            overflow: hidden!important;
+            overflow: hidden !important;
         }
     }
 }
@@ -91,7 +97,7 @@
         display: flex;
         justify-content: space-between;
         left: 50%;
-        max-width: 1440px;
+        max-width: 1240px;
         position: relative;
         align-items: center;
         transform: translateX(-50%);
@@ -101,6 +107,7 @@
 
     &__logo {
         z-index: 100;
+
         &-image {
             width: 199px;
         }
@@ -138,11 +145,55 @@
 
                 @media (max-width:900px) {
                     font-size: 20px;
+
+                }
+
+                .wpml-ls-display {
+                    display: none;
                 }
             }
 
             &:hover a {
                 color: #00AEEF;
+            }
+
+            &.menu-item-wpml-ls-2-en {
+                border-left:1px solid #787777;
+                padding-left: 20px;
+                margin-right: 10px;
+
+                @media (max-width:900px) {
+                    border-left:0px ;
+                    padding-left: 0px;
+                    margin-right: 0px;
+                }
+            }
+   &.menu-item-wpml-ls-2-pl {
+       
+
+                @media (max-width:900px) {
+                    position: absolute;
+                    bottom: 0px;
+                    left: 40px;
+                
+                }
+            }
+
+           
+
+            &.wpml-ls-menu-item {
+                    a {
+                        color:#787777;
+
+                        &:hover {
+                            color: #00AEEF;
+                        }
+                    }
+            }
+            &.wpml-ls-current-language {
+                a {
+                    color:white;
+                }
             }
 
         }
@@ -157,7 +208,7 @@
             padding-top: 70px;
         }
 
-     
+
     }
 
 

@@ -19,6 +19,10 @@ const menuBtn = document.querySelector('.header__ham');
   
   menuBtn.addEventListener('click', menu);
 
+
+
+
+
 window.onscroll = function() {myFunction()};
 
 const header = document.querySelector(".header");
@@ -38,6 +42,7 @@ function myFunction() {
   }
 }
 
+
 const pageTypeProjects= document.querySelector('.page-type.projects'); 
 
 if (pageTypeProjects) {
@@ -46,21 +51,31 @@ const invChoice= document.querySelector('.newestinv__postschoice-item');
 
 const invChoiceBeraus = document.querySelector('.newestinv__postschoice-item.inwestycje-biurowe');
 
+const invChoiceBerausEn = document.querySelector('.newestinv__postschoice-item.office-investments');
+
 const invChoiceFlats = document.querySelector('.newestinv__postschoice-item.inwestycje-mieszkaniowe');
+
+const invChoiceFlatsEn = document.querySelector('.newestinv__postschoice-item.flats-investments');
 
 const invChoiceAll = document.querySelector('.newestinv__postschoice-item.all');
 
 const invPostsBerau = document.querySelectorAll('.newestinv__posts-item.inwestycje-biurowe')
 
+const invPostsBerauEn = document.querySelectorAll('.newestinv__posts-item.office-investments')
+
 const invPostsFlats = document.querySelectorAll('.newestinv__posts-item.inwestycje-mieszkaniowe')
+
+const invPostsFlatsEn = document.querySelectorAll('.newestinv__posts-item.flats-investments')
 
 const invPostsAll = document.querySelectorAll('.newestinv__posts-item.single-content')
 
 
 
-  if (invChoice.dataset.link == "http://localhost/wordpress/projekty/?inv=inwestycje-biurowe") {
+  if (invChoice.dataset.link == "http://mermaid.atthost24.pl/projekty/?inv=inwestycje-biurowe" ) {  
+
  invChoiceBeraus.classList.add('active');
  invPostsFlats.forEach((flat) => {
+
   flat.style.display = 'none';
   invChoiceFlats.addEventListener('click', () => {
     flat.style.display = 'block';
@@ -70,9 +85,29 @@ const invPostsAll = document.querySelectorAll('.newestinv__posts-item.single-con
       all.style.display = 'block';
     })
   });
+
 });
-} else if (invChoice.dataset.link == "http://localhost/wordpress/projekty/?inv=inwestycje-mieszkaniowe") {
+
+  } else if (invChoice.dataset.link == "http://mermaid.atthost24.pl/en/projects/?inv=office-investments"){
+  invPostsFlatsEn.forEach((flat) => {
+
+    invChoiceBerausEn.classList.add('active');
+  flat.style.display = 'none';
+  invChoiceFlatsEn.addEventListener('click', () => {
+    flat.style.display = 'block';
+  })
+  invPostsAll.forEach((all) => {
+    invChoiceAll.addEventListener('click', () => {
+      all.style.display = 'block';
+    })
+  });
+
+});
+
+
+} else if (invChoice.dataset.link == "http://mermaid.atthost24.pl/projekty/?inv=inwestycje-mieszkaniowe") {
   invChoiceFlats.classList.add('active');
+  document.getElementById("#inwestycje-mieszkaniowe").click();
   invPostsBerau.forEach((berau) => {
     berau.style.display = 'none';
     invChoiceBeraus.addEventListener('click', () => {
@@ -84,8 +119,24 @@ const invPostsAll = document.querySelectorAll('.newestinv__posts-item.single-con
       all.style.display = 'block';
     })
   });
-  
-} else {
+
+}
+  else  if (invChoice.dataset.link == "http://mermaid.atthost24.pl/en/projects/?inv=flats-investments") {
+    invChoiceFlatsEn.classList.add('active');
+    invPostsBerau.forEach((berau) => {
+      berau.style.display = 'none';
+      invChoiceBerausEn.addEventListener('click', () => {
+        berau.style.display = 'block';
+      })
+    });
+    invPostsAll.forEach((all) => {
+      invChoiceAll.addEventListener('click', () => {
+        all.style.display = 'block';
+      })
+    });
+  }
+ 
+else {
   invChoiceAll.classList.add('active');
   invPostsAll.forEach((all) => {
     all.style.display = 'block';
@@ -96,10 +147,13 @@ const invPostsAll = document.querySelectorAll('.newestinv__posts-item.single-con
 }
 }
 
+
+
+
 const pageTypeAboutus= document.querySelector('.page-type.aboutus'); 
 
 if (pageTypeAboutus) {
-
+const aboutUsAll = document.querySelector('.aboutustemp__postschoice');
 const aboutUsProfile = document.querySelector('.aboutustemp__postschoice-item.profile');
 const aboutUsHistory = document.querySelector('.aboutustemp__postschoice-item.history');
 const aboutUsClients = document.querySelector('.aboutustemp__postschoice-item.invclients');
@@ -141,7 +195,93 @@ aboutUsHistory.addEventListener('click', historya);
 }
 
 aboutUsClients.addEventListener('click', clienta);
+
+
+if (aboutUsAll.dataset.link == "http://mermaid.atthost24.pl/o-firmie/?about=historia" || aboutUsAll.dataset.link == "http://mermaid.atthost24.pl/en/about-us/?about=history") {
+  historya();
+} else if (aboutUsAll.dataset.link == "http://mermaid.atthost24.pl/o-firmie/?about=klienci" || aboutUsAll.dataset.link == "http://mermaid.atthost24.pl/en/about-us/?about=clients") {
+  clienta();
+}
+
  
 }
 
 
+const pageTypeNews= document.querySelector('.page-type.news'); 
+
+if (pageTypeNews) {
+
+const newsButton = document.querySelector('.news-template__postschoice-item.aktualnosci');
+
+      newsButton.classList.add('active')
+
+}
+
+
+const frontPageVar= document.querySelector('.frontpage-wrapper');  
+
+if(frontPageVar) {
+  
+
+
+const postsContainer = document.querySelector('.newestinv__posts');
+
+
+const numberOfInvPosts = document.querySelector('.newestinv__posts').childElementCount;
+
+
+if(numberOfInvPosts == 1) {
+  postsContainer.classList.add('one');
+} else if(numberOfInvPosts == 2) {
+  postsContainer.classList.add('two');
+} else if(numberOfInvPosts == 3) {
+  postsContainer.classList.add('three');
+} else if(numberOfInvPosts == 4) {
+  postsContainer.classList.add('four');
+} else if(numberOfInvPosts > 4) {
+  postsContainer.classList.add('morethanfour');
+}
+
+const newestPostsChoice = document.querySelectorAll('.newestinv__postschoice-item');
+
+newestPostsChoice.forEach((button) => {
+
+button.addEventListener('click', ()=> {
+  if(numberOfInvPosts == 1) {
+    postsContainer.classList.remove('one');
+  } else if(numberOfInvPosts == 2) {
+    postsContainer.classList.remove('two');
+  } else if(numberOfInvPosts == 3) {
+    postsContainer.classList.remove('three');
+  } else if(numberOfInvPosts == 4) {
+    postsContainer.classList.remove('four');
+  }
+})
+});
+
+}
+
+const contactPage = document.querySelector('.contact-temp');
+
+if (frontPageVar || contactPage) {
+
+const contactButton = document.querySelector('.hidden-button');
+const hiddenContact = document.querySelector('.hide-content');
+
+
+let contactOpen = false;
+
+const contact = () => {
+    if (!contactOpen) {
+      contactButton.classList.add('open');
+      hiddenContact.classList.add('open');
+        contactOpen = true;
+    } else {
+      contactButton.classList.remove('open');
+      hiddenContact.classList.remove('open');
+        contactOpen = false;
+    }
+}
+
+contactButton.addEventListener('click', contact);
+}

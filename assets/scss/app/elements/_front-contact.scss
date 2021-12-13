@@ -18,6 +18,10 @@
         }
 
         &-header {
+            a {
+                color:black;
+            }
+    
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -50,6 +54,7 @@
 
                 &.template {
                     margin-bottom: 200px;
+
                     @media (max-width:900px) {
                         margin-bottom: 10px;
                     }
@@ -70,6 +75,7 @@
     &__form {
         width: 40%;
         padding-top: 134px;
+        height: 800px;
 
         @media (max-width:900px) {
             padding-top: 34px;
@@ -77,13 +83,15 @@
             display: flex;
             justify-content: center;
         }
-     
+
         form {
             max-width: 350px;
+            position: relative;
 
             @media (max-width:900px) {
                 max-width: 500px
             }
+
             @media (max-width:450px) {
                 max-width: 300px
             }
@@ -132,38 +140,151 @@
                     span {
                         font-size: 10px;
                         color: #7B7C8E;
+                        font-weight: 500;
                     }
 
                 }
 
-                .wpcf7-submit {
-                    cursor: pointer;
-                    border: 0;
-                    background: #00AEEF;
-                    color: white;
+
+
+
+            }
+
+            .checkbox-content {
+                span {
+                    span {
+                        span {
+                            label {
+                                span {
+
+                                    position: relative;
+                                    left: 30px;
+                                    display: flex;
+                                    top: -22px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .hide-content {
+                    display: flex;
+                    position: relative;
+                    left: 40px;
+                    bottom: 28px;
+                    font-size: 10px;
+                    color: #7B7C8E;
+                    font-weight: 500;
+                    height: 0;
+                    visibility: hidden;
+
+
+                    &.open {
+                        height: auto;
+                        visibility: visible;
+                    }
+                }
+
+                .hidden-button {
+                    position: relative;
+                    left: 40px;
+                    bottom: 28px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: #00AEEF;
                     display: flex;
                     align-items: center;
-                    width: 150px;
-                    height: 48px;
-                    justify-content: space-evenly;
-                    font-size: 16px;
-                    margin-top: 25px;
-                    transition: 0.5s ease all;
-                    text-decoration: none;
-                    font-weight: 800;
-                    margin-left: auto;
+                    height: 20px;
+                    cursor: pointer;
 
                     &::after {
-                        content: '';
-
+                        content: '>';
+                        display: block;
                         margin-left: 5px;
-                        width: 26px;
+                        font-size: 20px;
+                        color: #5c5c5c;
+                        font-weight: 300;
+                        transform: rotate(90deg);
+                        margin-bottom: 5px;
+                        transition: 0.3s ease;
+                    }
 
+                    &.open {
+                        &::after {
 
+                            transform: rotate(-90deg);
 
+                        }
                     }
                 }
+
+                .wpcf7-not-valid-tip {
+
+                    left: 40px;
+                    position: relative;
+                    bottom: 27px;
+                    color: red;
+                }
+            }
+
+            span {
+                font-size: 10px;
+                color: #7B7C8E;
+                font-weight: 500;
             }
         }
+
+        .wpcf7 form.invalid .wpcf7-response-output,
+        .wpcf7 form.unaccepted .wpcf7-response-output,
+        .wpcf7 form.payment-required .wpcf7-response-output {
+            border: 2px solid #00a0d2;
+            position: absolute;
+            bottom: 0px;
+            width: 180px;
+            font-size: 10px;
+        }
+
+        .submit-contact {
+            position: relative;
+            .wpcf7-submit {
+                padding-right: 30px;
+                cursor: pointer;
+                border: 0;
+                background: #00AEEF;
+                color: white;
+                display: flex;
+                align-items: center;
+                width: 150px;
+                height: 48px;
+                justify-content: space-evenly;
+                font-size: 16px;
+                margin-top: 25px;
+                text-decoration: none;
+                font-weight: 800;
+                margin-left: auto;
+                transition: 1s ease all;
+         
+                
+    
+                &:hover {
+                    color:#00AEEF;
+                    border: 1px solid #00AEEF;
+                    background: transparent;
+                    padding-right: 0;
+                }
+    
+            }
+            p {
+                background-image: url('../images/ClosedEnvelope-White.png');
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                height: 30px;
+                width: 30px;
+                background-size: 27px;
+                background-repeat: no-repeat;
+            }
+        }
+     
     }
 }
