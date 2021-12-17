@@ -20,9 +20,9 @@ while ( have_posts() ): the_post();?>
 
       
             <?php if (ICL_LANGUAGE_CODE=='en' ) : ?>
-                <a href="http://mermaid.atthost24.pl/en/projects/">
+                <a href="/en/projects/">
                 <?php else:  ?>
-                    <a href="http://mermaid.atthost24.pl/projekty/">
+                    <a href="/projekty/">
                     <?php endif; ?>
                 <img src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleLeft-Dark.png"
                     alt="Projekty"> 

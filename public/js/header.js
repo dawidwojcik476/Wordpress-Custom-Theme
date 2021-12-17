@@ -16,12 +16,14 @@ const menuBtn = document.querySelector('.header__ham');
           menuOpen = false;
       }
   }
-  
+   
   menuBtn.addEventListener('click', menu);
 
 
+  var getUrl = window.location;
+  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 
-
+console.log(baseUrl);
 
 window.onscroll = function() {myFunction()};
 
@@ -71,7 +73,7 @@ const invPostsAll = document.querySelectorAll('.newestinv__posts-item.single-con
 
 
 
-  if (invChoice.dataset.link == "http://mermaid.atthost24.pl/projekty/?inv=inwestycje-biurowe" ) {  
+  if (invChoice.dataset.link == `${baseUrl}/?inv=inwestycje-biurowe` ) {  
 
  invChoiceBeraus.classList.add('active');
  invPostsFlats.forEach((flat) => {
@@ -88,7 +90,7 @@ const invPostsAll = document.querySelectorAll('.newestinv__posts-item.single-con
 
 });
 
-  } else if (invChoice.dataset.link == "http://mermaid.atthost24.pl/en/projects/?inv=office-investments"){
+  } else if (invChoice.dataset.link == `${baseUrl}/projects/?inv=office-investments`){
   invPostsFlatsEn.forEach((flat) => {
 
     invChoiceBerausEn.classList.add('active');
@@ -105,7 +107,7 @@ const invPostsAll = document.querySelectorAll('.newestinv__posts-item.single-con
 });
 
 
-} else if (invChoice.dataset.link == "http://mermaid.atthost24.pl/projekty/?inv=inwestycje-mieszkaniowe") {
+} else if (invChoice.dataset.link == `${baseUrl}/?inv=inwestycje-mieszkaniowe`) {
   invChoiceFlats.classList.add('active');
   document.getElementById("#inwestycje-mieszkaniowe").click();
   invPostsBerau.forEach((berau) => {
@@ -121,7 +123,7 @@ const invPostsAll = document.querySelectorAll('.newestinv__posts-item.single-con
   });
 
 }
-  else  if (invChoice.dataset.link == "http://mermaid.atthost24.pl/en/projects/?inv=flats-investments") {
+  else  if (invChoice.dataset.link == `${baseUrl}/projects/?inv=flats-investments`) {
     invChoiceFlatsEn.classList.add('active');
     invPostsBerau.forEach((berau) => {
       berau.style.display = 'none';
@@ -197,9 +199,9 @@ aboutUsHistory.addEventListener('click', historya);
 aboutUsClients.addEventListener('click', clienta);
 
 
-if (aboutUsAll.dataset.link == "http://mermaid.atthost24.pl/o-firmie/?about=historia" || aboutUsAll.dataset.link == "http://mermaid.atthost24.pl/en/about-us/?about=history") {
+if (aboutUsAll.dataset.link == `${baseUrl}/?about=historia` || aboutUsAll.dataset.link == `${baseUrl}/about-us/?about=history`) {
   historya();
-} else if (aboutUsAll.dataset.link == "http://mermaid.atthost24.pl/o-firmie/?about=klienci" || aboutUsAll.dataset.link == "http://mermaid.atthost24.pl/en/about-us/?about=clients") {
+} else if (aboutUsAll.dataset.link == `${baseUrl}/?about=klienci` || aboutUsAll.dataset.link == `${baseUrl}/about-us/?about=clients`) {
   clienta();
 }
 

@@ -141,6 +141,8 @@ a {
           color: #00AEEF; }
       .header__menu-ul li.wpml-ls-current-language a {
         color: white; }
+    .header__menu-ul .current_page_item a {
+      color: #00AEEF; }
     @media (max-width: 900px) {
       .header__menu-ul {
         -webkit-box-orient: vertical;
@@ -2341,7 +2343,8 @@ a {
       .invprofile__block-image img {
         width: 100%;
         -o-object-fit: contain;
-           object-fit: contain; }
+           object-fit: contain;
+        max-height: 600px; }
         @media (max-width: 850px) {
           .invprofile__block-image img {
             -o-object-fit: cover;

@@ -198,6 +198,12 @@ a {
 
         }
 
+        .current_page_item {
+            a {
+                color: #00AEEF;
+            }
+        }
+
         @media(max-width:900px) {
             flex-direction: column;
             position: relative;

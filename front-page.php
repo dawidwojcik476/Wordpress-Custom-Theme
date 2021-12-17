@@ -21,9 +21,9 @@ get_header();?>
             <div class="main-banner__header-content">
                 <div class="main-banner__header-icon">
                 <?php if ( is_front_page() && ICL_LANGUAGE_CODE=='en' ) : ?>
-                    <a href="http://mermaid.atthost24.pl/en/projects/?inv=flats-investments">
+                    <a href="/en/projects/?inv=flats-investments">
                         <?php else:  ?>
-                            <a href="http://mermaid.atthost24.pl/projekty/?inv=inwestycje-mieszkaniowe">
+                            <a href="/projekty/?inv=inwestycje-mieszkaniowe">
                         <?php endif; ?>
               
               
@@ -39,9 +39,9 @@ get_header();?>
                 </div>
                 <div class="main-banner__header-icon nd">
                 <?php if ( is_front_page() && ICL_LANGUAGE_CODE=='en' ) : ?>
-                    <a href="http://mermaid.atthost24.pl/en/projects/?inv=office-investments">
+                    <a href="/en/projects/?inv=office-investments">
                         <?php else:  ?>
-                            <a href="http://mermaid.atthost24.pl/projekty/?inv=inwestycje-biurowe">
+                            <a href="/projekty/?inv=inwestycje-biurowe">
                         <?php endif; ?>
               
      

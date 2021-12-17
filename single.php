@@ -14,7 +14,7 @@ while ( have_posts() ): the_post();?>
 
     <div class="inv-content__sidebar single">
         <div class="inv-content__sidebar-back single">
-            <a href="http://localhost/wordpress/aktualnosci/">
+            <a href="/aktualnosci/">
                 <img src="<?php echo get_template_directory_uri(); ?>/public/images/ArrowCircleLeft-Dark.png"
                     alt="Projekty"> Wróć do Aktualności </a>
         </div>
